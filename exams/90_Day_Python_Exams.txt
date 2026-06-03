@@ -1,0 +1,64 @@
+Section 1: Core Python (Ch 1-4)
+Test: Open blank file, build this in 20 minutes with no notes:
+Build a number analyzer:
+- Ask user for 5 numbers
+- Print: highest, lowest, average
+- Tell them how many are above average
+- Use functions for each calculation
+Pass: Built it, works, took under 20 min
+Fail: Needed notes or help for basic structure
+
+Section 2: Data Structures (Ch 5-7)
+Test: Build this in 30 minutes:
+Build a simple inventory:
+- Dictionary of items with quantities
+- Add item, remove item, restock, view all
+- Warn when stock below 5
+- Save to JSON file, load on startup
+Pass: Built it, file saves/loads, works correctly
+Fail: Struggled with dictionary methods or file I/O 
+Was stuck on file I/O syntax that ate up time :(
+
+Section 3: Strings + Text (Ch 8)
+Test: Build this in 20 minutes:
+Build a text formatter:
+- Take messy user input
+- Strip whitespace, fix capitalization
+- Count words and characters
+- Check if it contains an email address (basic check)
+Pass: String methods feel natural, no major issues
+Fail: Constantly looking up string methods
+and i would of passed too if it wern't for me wanting to use lambda ¯\_(ツ)_/¯
+
+Section 4: Regex (Ch 9)
+Test: Build this in 25 minutes:
+Build a simple validator:
+- Validate email format (has @, has ., no spaces)
+- Validate phone (10 digits, any format)
+- Return True/False with error message
+Pass: Wrote patterns from memory or near-memory
+Fail: No idea where to start without looking it up
+
+Section 5: File I/O (Ch 10)
+Test: Build this in 20 minutes:
+Build a note saver:
+- Add notes with a title
+- Save all notes to a JSON file
+- Load notes on startup
+- View all notes
+- Delete a note by title
+Pass: File operations feel natural, handles missing file gracefully
+Fail: Confusion about open modes, JSON methods
+
+Scoring:
+
+5/5 sections passed: Ready to build 
+3-4/5 passed: Ready to build, will need help in specific areas
+Under 3/5: Drill weak sections before building (one more week)
+
+Section			Result			Notes
+1 — Core Python		✅Pass			19 min, clean
+2 — Data Structures	❎Fail			50 min, missed low stock warning
+3 — Strings		❎Fail			35 min, lambda needed notes
+4 — Regex		✅Pass			Sub 20 min, clean
+5 — File I/O		✅Pass			25 min, clean

@@ -1,0 +1,114 @@
+How to use this plan:
+
+Write each program from scratch in Mu with no notes
+If you get stuck for more than 10 minutes check your binder — but try first
+Save every program with the naming format shown
+Each program builds on the last — don't skip around
+
+
+Week 1 — Solidifying Foundations
+Target: 10 hours — Functions, loops, lists, dictionaries
+
+✔ W1P1 — Number Analyzer W1P1_number_analyzer.py
+Ask the user for 5 numbers one at a time, store them in a list, then print the highest, lowest, sum and average. Use functions for each calculation.
+
+W1P2 — Word Counter W1P2_word_counter.py
+Ask the user to type a sentence. Count how many times each word appears and display the results using a dictionary. Ignore case.
+
+✔ W1P3 — Grade Tracker W1P3_grade_tracker.py
+Ask the user to enter student names and scores until they type done. Store in a list of dictionaries. Print a sorted report showing each student, their score and their letter grade.
+
+✔ W1P4 — Shopping List W1P4_shopping_list.py
+Build a shopping list program with a menu loop. Options: add item, remove item, view list, quit. Use a list to store items.
+
+✔ W1P5 — Contact Book W1P5_contact_book.py
+Build a contact book with a menu loop. Options: add contact, find contact, delete contact, view all, quit. Store contacts as a dictionary with name as key and phone number as value.
+
+✔ W1P6 — Number Guessing Game W1P6_guessing_game.py
+Random number 1-100. Give the user unlimited guesses. Track how many guesses it took. After winning ask if they want to play again.
+
+✔ W1P7 — Caesar Cipher W1P7_caesar_cipher.py
+Ask for a message and a shift number. Encode the message by shifting each letter by that number using ord() and chr(). Add a decode option.
+
+✔ W1P8 — Student Report Card W1P8_report_card.py
+Ask for a student name and 5 subject scores. Store in a dictionary. Calculate the average. Print a formatted report card using f-strings and string padding.
+
+✔ W1P9 — Password Generator W1P9_password_generator.py
+Ask the user how long they want the password. Randomly pick characters from a string of letters, numbers and special characters. Print the generated password.
+
+✔ W1P10 — Inventory Manager W1P10_inventory.py
+Build an inventory system with a menu loop. Options: add item with quantity, restock item, sell item, view inventory, quit. Track quantities in a dictionary and warn when stock is below 5.
+
+✔ Week 2 — Adding Complexity
+Target: 10 hours — Combining concepts, error handling, logging
+W2P1 — Calculator W2P1_calculator.py
+Full calculator with add, subtract, multiply, divide. Menu driven. Use try/except for division by zero and invalid input. Log all calculations to a file using logging.
+
+✔ W2P2 — Quiz Game W2P2_quiz_game.py + 3 sub programs
+Store 10 questions and answers in a list of dictionaries. Ask each question, check the answer, track the score. Display final results with percentage. Use try/except for invalid input.
+
+✔ W2P3 — Text Analyzer W2P3_text_analyzer.py + 3 sub programs
+Ask the user to type or paste a paragraph. Count total words, unique words, average word length, longest word and most common word. Display a formatted report.
+
+✔ W2P4 — Login System W2P4_login_system.py + 6 Sub programs & incremental program breakdown practice 
+Store usernames and passwords in a dictionary. Menu options: login, register, quit. Limit login attempts to 3 before locking out. Use assertions to validate registration input.
+
+✔ W2P5 — Simple Bank Account W2P5_bank_account.py 3 Sub programs & incremental program breakdown practice
+Create functions for deposit, withdraw and check balance. Use a global variable for balance. Use try/except to handle invalid amounts. Log all transactions. Prevent withdrawal if balance is too low.
+
+✔ W2P6 — Hangman W2P6_hangman.py 6 Sub Programs & IPBP + re-wrote the main program better
+Store a list of words. Pick one randomly. Display blanks for each letter. Ask the user to guess one letter at a time. Track wrong guesses. Win when all letters are found, lose after 6 wrong guesses.
+
+✔ W2P7 — To-Do List W2P7_todo_list.py IPBP + 2 sub programs + retry
+Menu driven to-do list. Options: add task, mark complete, view pending, view completed, delete task, quit. Store tasks as a list of dictionaries with name and status.
+
+✔ W2P8 — Number Base Converter W2P8_base_converter.py
+Ask for a number and convert it between decimal, binary and hexadecimal. Menu driven. Use try/except for invalid input. Display all three formats.
+
+✔  W2P9 — Word Scrambler W2P9_word_scrambler.py
+Ask for a word. Scramble the letters randomly. Show the scrambled word and ask the user to guess the original. Give 3 attempts. Use string and list methods.
+
+✔ W2P10 — Student Grade Manager W2P10_grade_manager.py
+Full grade management system. Add students, add scores per subject, calculate averages, display ranked list. Store as nested dictionaries. Use logging to track all changes.
+
+Week 3 — Full Programs with Regex
+Target: 10 hours — Everything combined including Chapter 9
+
+✔ W3P1 — Input Validator W3P1_input_validator.py
+Build a form validator using regex. Validate: full name, phone number, email address, date of birth, postal code. Print valid or invalid with specific error messages for each field.
+
+✔ W3P2 — Text Cleaner W3P2_text_cleaner.py
+Ask user to paste messy text. Clean it using regex and string methods. Remove extra spaces, fix capitalization, remove special characters, censor a list of banned words. Display before and after.
+
+✔ W3P3 — Log File Analyzer W3P3_log_analyzer.py
+Generate a fake log file using logging with different levels. Then use regex to search through it — extract all error messages, count occurrences of each level, find all timestamps. Display a summary report.
+
+
+✔ W3P4 — Password Strength Checker W3P4_password_checker.py
+Full password validator using regex. Check length, uppercase, lowercase, digits, special characters. Give a strength score out of 5. Suggest improvements for anything missing. Log all attempts.
+
+✔ W3P5 — Mini Address Book W3P5_address_book.py
+Full address book program. Store name, phone, email and address for each contact. Use regex to validate phone numbers and emails on entry. Menu driven with add, find, edit, delete, display all. Log all changes.
+
+Daily Target:
+
+Week 1 — 2 programs per day on your free days
+Week 2 — 1-2 programs per day, they get longer
+Week 3 — 1 program per day, take your time
+
+
+Rules:
+
+Write from scratch every time — no copying from binder while writing
+Binder is for checking after you get stuck for 10+ minutes
+Save every program — build your own library
+If a program feels easy write a harder version of it
+
+
+
+
+
+
+
+
+
