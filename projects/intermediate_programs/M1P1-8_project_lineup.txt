@@ -1,13 +1,13 @@
-Full M1 lineup:
-Project		Concept 		Focus		Prereq
-M1P1       	Unit converter				None
-M1P2		Expense tracker 	(JSON save)	None
-M1P3		Age / date calculator			Ch 16
-M1P4		Scheduled task reminder			Ch 16
-M1P5		Excel reader / writer			Ch 12
-M1P6		Text adventure 		(JSON-driven)	None
-M1P7		CSV log / tracker			Ch 15
-M1P8		JSON API fetcher			Ch 15
+Full M1 lineup:(Automate the boring stuff Python book 3rd edition prerequisites)
+Project	  Concept 		Focus	        Prereq
+M1P1      Unit converter		        None
+M1P2	  Expense tracker       (JSON save)     None
+M1P3	  Age / date calculator		        Ch 19 — Keeping Time, Scheduling Tasks
+M1P4	  Scheduled task reminder		Ch 19 — Keeping Time, Scheduling Tasks
+M1P5	  Excel reader / writer			Ch 14 — Excel Spreadsheets
+M1P6	  Text adventure        (JSON-driven)	None
+M1P7	  CSV log / tracker			Ch 18 — CSV, JSON, and XML Files
+M1P8	  JSON API fetcher			Ch 18 — CSV, JSON, and XML Files
 =================================================================================
 M1P1 — Unit Converter
 Convert between length, weight, and temperature. User picks a category, picks the conversion type, enters a value, gets the result. Loops so they can keep converting without restarting. Input validation throughout. Clean formatted output.
@@ -15,20 +15,20 @@ Convert between length, weight, and temperature. User picks a category, picks th
 M1P2 — Expense Tracker
 Add an expense (name, amount, category), view all expenses, view total, view by category. Saves to a JSON file and loads it on startup so data persists between runs. Menu-driven loop. Input validation.
 
-M1P3 — Age / Date Calculator (Ch 16)
+M1P3 — Age / Date Calculator (Ch 19)
 Enter a birthdate, get back age in years/months/days, days until next birthday, and the day of the week you were born. Bonus: calculate days between any two dates. Input validation for date formatting.
 
-M1P4 — Scheduled Task Reminder (Ch 16)
+M1P4 — Scheduled Task Reminder (Ch 19)
 Add a task with a name and due date. View all tasks. When the program runs it automatically flags any overdue tasks. Tasks sorted by due date. Saved to JSON so nothing is lost between runs.
 
-M1P5 — Excel Reader/Writer (Ch 12)
+M1P5 — Excel Reader/Writer (Ch 14)
 Read an existing Excel file, display the data in the terminal, perform a simple calculation on it (sum or average a column), then write the results back to a new sheet in the same file or a new file entirely.
 
 M1P6 — Text Adventure (No prereq)
 Rooms, descriptions, and choices stored in a JSON file you edit manually in VS Code. Random encounter table also in the file — triggered as the player moves through rooms. Simple health stat that changes based on encounters. Win/lose condition. Adding new rooms or encounters only requires editing the JSON, no code changes.
 
-M1P7 — CSV Log / Tracker (Ch 15)
+M1P7 — CSV Log / Tracker (Ch 18)
 A workout or habit log. Add an entry (date, activity, notes). View all entries. Filter by date range or activity type. Reads and writes a CSV file. Data persists between runs.
 
-M1P8 — JSON API Fetcher (Ch 15)
+M1P8 — JSON API Fetcher (Ch 18)
 Connect to a free public API (weather and exchange rates are good options). User inputs a query (city name, currency pair etc.), program fetches the data, parses the JSON response, and displays it cleanly in the terminal. Error handling for failed requests or bad input. Optionally saves results to a file.
