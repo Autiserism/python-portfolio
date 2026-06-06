@@ -37,7 +37,7 @@ sets h variable as the pointer to the home path #c/users/name
 shutil copys the > home path / 'spam/f..' and copys it to the home path >, h
 #^^^ (1) dont need to have for (2) to work just for a visual
 the (2) takes a copy of file1 calls the copy file2 and delivers it to the >h #home drive
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 The first shutil.copy() call copies the file at
 C:\Users\Al\spam\file1.txt to the home folder C:\Users\Al.
 The return value is the path of the newly copied file.
@@ -106,52 +106,194 @@ os.unlink(path)
 #Calling
 os.rmdir(path)
 #will delete the folder at path. This folder must be empty.
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*
-
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+When running these comands its best to dry run them or risk permanently
+deleting the wrong file, also good to quickly make a backup
+----------------------------------------------------------------------
+import os
+from pathlib import Path
+for filename in Path.home().glob('*.rxt'):# typo
+    #os.unlink(filename) if it wasnt comented out it would delete all .rxt files by accident
+    print('Deleting', filename) # should be dry ran with print
 ----------------------------------------------------------------------
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ----------------------------------------------------------------------
+'Deleting to the Recycle Bin
+**********************************************************************
+third-party send2trash module.
+//////////////////////////////////////////////////////////////////////
+import send2trash
+send2trash.send2trash('file1.txt')
+----------------------------------------------------------------------
+gives you a chance to recover file by sending them to the recycle bin
+----------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------------
+'Walking a Directory Tree
+**********************************************************************
+to list all files and subfolders call the os.listdir() function
+//////////////////////////////////////////////////////////////////////
+import os
+os.listdir(r'C:\Users\Name')
+>>>['.anaconda', '.android', '.cache', '.dotnet', '.eclipse', '.gitconfig',
+--snip--
+'__pycache__']
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+or get a list of Path objects in a folder by calling the iterdir() method:
+//////////////////////////////////////////////////////////////////////
+from pathlib import Path
+home = Path.home()
+list(home.iterdir())
+>>>[WindowsPath('C:/Users/Al/.anaconda'), WindowsPath('C:/Users/Al/.android'),
+WindowsPath('C:/Users/Al/.cache'),
+--snip--
+WindowsPath('C:/Users/Al/__pycache__')]
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+you want to walk through the directory tree, accessing each file as you go.
+the os.walk() function to handle this process for you.
+//////////////////////////////////////////////////////////////////////
+from pathlib import Path
+h = Path.home()
+(h / 'spam').mkdir(exist_ok=True)
+(h / 'spam/eggs').mkdir(exist_ok=True)
+(h / 'spam/eggs2').mkdir(exist_ok=True)
+(h / 'spam/eggs/bacon').mkdir(exist_ok=True)
+for f in ['spam/file1.txt', 'spam/eggs/file2.txt', 'spam/eggs/file3.txt',
+'spam/eggs/bacon/file4.txt']:
+    with open(h / f, 'w', encoding='utf-8') as file:
+        file.write('Hello')
+>>> # At this point, the folders and files now exist.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+This code will create the following folders and files in your home folder:
+----------------------------------------------------------------------
+The spam folder
+The spam/file1.txt file
+The spam/eggs folder
+The spam/eggs/file2.txt file
+The spam/eggs/file3.txt file
+The spam/eggs2 folder
+The spam/eggs/bacon folder
+The spam/eggs/bacon/file4.txt file
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+example program that uses the os.walk() function on this tree of folders and renames each file to uppercase letters:
+----------------------------------------------------------------------
+import os, shutil
+from pathlib import Path
+h = Path.home()
 
+for folder_name, subfolders, filenames in os.walk(h / 'spam'):
+    print('The current folder is ' + folder_name)
 
+    for subfolder in subfolders:
+        print('SUBFOLDER OF ' + folder_name + ': ' + subfolder)
+
+    for filename in filenames:
+        print('FILE INSIDE ' + folder_name + ': '+ filename)
+        # Rename file to uppercase:
+        p = Path(folder_name)
+        shutil.move(p / filename, p / filename.upper())
+
+    print('')
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+You can use os.walk() in a for loop to walk a directory tree
+the os.walk() function will return three values on each iteration through the loop:
+
+A string of the current folder’s name
+A list of strings of the subfolders in the current folder
+A list of strings of the files in the current folder
+----------------------------------------------------------------------
+#When ran this program gaves the following output:
+The current folder is C:\Users\Al\spam
+SUBFOLDER OF C:\Users\Al\spam: eggs
+SUBFOLDER OF C:\Users\Al\spam: eggs2
+FILE INSIDE C:\Users\Al\spam: file1.txt
+
+The current folder is C:\Users\Al\spam\eggs
+SUBFOLDER OF C:\Users\Al\spam\eggs: bacon
+FILE INSIDE C:\Users\Al\spam\eggs: file2.txt
+FILE INSIDE C:\Users\Al\spam\eggs: file3.txt
+
+The current folder is C:\Users\Al\spam\eggs\bacon
+FILE INSIDE C:\Users\Al\spam\eggs\bacon: file4.txt
+
+The current folder is C:\Users\Al\spam\eggs2
+----------------------------------------------------------------------
+os.walk() returns lists of strings for the subfolder and filename variables
+you can pass the folder and filename to functions like shutil.move()
+----------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------------
+'Compressing Files with the zipfile Module
+**********************************************************************
+Python programs can create or extract from ZIP files using functions in the
+zipfile module.
+//////////////////////////////////////////////////////////////////////
+import zipfile
+with open('file1.txt', 'w', encoding='utf-8') as file_obj:
+    file_obj.write('Hello' * 10000)
+
+with zipfile.ZipFile('example.zip', 'w') as example_zip:
+    example_zip.write('file1.txt', compress_type=zipfile.ZIP_DEFLATED,
+    compresslevel=9)
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+imports the zipfile module
+makes a file with the word hello written 10000 times
+
+uses the zipfile module creates the zip file and a pointer variable
+compresses the file1.txt
+sets the level of compresssion 0 lowest/fastest, 9 highest/more compressed
+it defaults to 6 if not specified
+to add files to an existing ZIP file,
+pass 'a' as the second argument to zipfile.ZipFile()# ('example.zip', 'a')
+to open the ZIP file in append mode.
+----------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------------
+Reading ZIP Files
+**********************************************************************
+import zipfile
+
+example_zip = zipfile.ZipFile('example.zip')
+example_zip.namelist()
+^#['file1.txt']
+
+file1_info = example_zip.getinfo('file1.txt')
+file1_info.file_size
+^#50000
+
+file1_info.compress_size
+^#97
+
+f'''Compressed file is {round(file1_info.file_size / file1_info
+    .compress_size, 2)}x smaller!'''
+^#'Compressed file is 515.46x smaller!'
+
+example_zip.close()
 //////////////////////////////////////////////////////////////////////
 
 
 ----------------------------------------------------------------------
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ----------------------------------------------------------------------
-
-
-//////////////////////////////////////////////////////////////////////
-
-
-----------------------------------------------------------------------
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-----------------------------------------------------------------------
-
+Extracting from ZIP Files
 
 //////////////////////////////////////////////////////////////////////
 
-
+import zipfile
+example_zip = zipfile.ZipFile('example.zip')
+example_zip.extractall()
+example_zip.close()
 ----------------------------------------------------------------------
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ----------------------------------------------------------------------
+ZipFile() — the constructor itself. Just like you call open() to open a regular file, you call zipfile.ZipFile() to open a zip file:
+pythonimport zipfile
+zf = zipfile.ZipFile('archive.zip', 'r')  # equivalent to open()
+zf.close()
 
-
-//////////////////////////////////////////////////////////////////////
-
-
-----------------------------------------------------------------------
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-----------------------------------------------------------------------
-
-
-//////////////////////////////////////////////////////////////////////
-
-
-----------------------------------------------------------------------
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-----------------------------------------------------------------------
-
+# or with context manager:
+with zipfile.ZipFile('archive.zip', 'r') as zf:
+    zf.extractall()
 
 //////////////////////////////////////////////////////////////////////
 
