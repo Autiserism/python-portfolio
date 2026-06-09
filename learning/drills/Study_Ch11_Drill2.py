@@ -13,14 +13,15 @@ import os
 home_path = Path.home()
 walk_dir = home_path / 'Documents' / 'python_portfolio'
 amount = 0
-for filepath, subfolder,files in os.walk(walk_dir):
-
-
-    for f in goop.glob('*.py'):
-        amount +=1
-
-
-    print (amount)
+for filepath, subfolders,files in os.walk(walk_dir):
+    print("Current folder is ", filepath)
+    for subfolder in subfolders:
+        print("     its in sub", subfolder)
+    for file in files:
+        print("         file is ", file)
+        if file.endswith('.py'):
+            amount +=1
+print (amount)
 
 
 
