@@ -84,6 +84,7 @@ def view_student():
 
 def view_ranked():
     ranked = sorted(students, key=lambda x:x['average'], reverse=True)
+    print (ranked)
     for i,student in enumerate(ranked, 1):
         print (f"{i}, {student['name']} {student['average']} {get_grade(student['average'])}")
 
