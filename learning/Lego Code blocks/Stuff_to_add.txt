@@ -1,0 +1,3 @@
+
+ sorted(var, key=lambda x:x['thing'], reverse=True)
+for lists and dictionaries
