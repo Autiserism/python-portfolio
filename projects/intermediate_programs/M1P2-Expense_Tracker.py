@@ -5,26 +5,16 @@ Saves to a JSON file and loads it on startup so data persists between runs.
 Menu-driven loop. Input validation.
 '''
 from pathlib import Path
-import json, re
+import json
 
-'''
 data_dir = Path.home() / 'projects'/ 'M1P2'
 data_dir.mkdir(parents=True,exist_ok=True)
 file_path = data_dir / 'expenses.json'
 
 if file_path.exists() and file_path.is_file():
-    content = json_file.read_text()
-    expenses = json.loads(content)
+    expenses = json.loads(file_path.read_text())
 else:
     expenses = {}
-'''
-
-expenses = {
-'food' : { 'beef' : 40.00 ,'vegetables' : 30.00, 'eggs' : 10.00, 'rice' : 6.00 , 'seasoning' : 4.00},
-'subscriptions' : {'gym' : 17.50 , 'Ai' : 10.00, 'other' : 7.50},
-'life' : { 'phone' : 20.00, 'car' : 200.00 , 'apartment' : 320.00, 'purchases': 30.00}
-}
-
 
 def new_category():
     while True:
@@ -38,7 +28,6 @@ def new_category():
         break
     return
 
-
 def add_expense_menu():
     while True:
         tmp = []
@@ -50,12 +39,9 @@ def add_expense_menu():
         index = input('make a selection: ').strip().lower()
         if index == 'new':
             new_category()
-            print(expenses) #<<<<<<<<<<<<<<<<<<<<<
             continue
         if index == 'quit':
             break
-        print('debug > ',tmp) #<<<<<<<<<<<<<<<<<<<<<<<<
-
         try:
             index = int(index)
             item = tmp[index-1]
@@ -95,7 +81,7 @@ def add_expense(item):
 def view_all_expenses():
     for i, category in enumerate(expenses, 1):
         total = sum(expenses[category].values())
-        print(f"\n{i}. {category.title()}")#- Weekly Total: ${total:.2f}
+        print(f"\n{i}. {category.title()}")
         for item, amount in expenses[category].items():
             print(f"     {item.title()} ${amount:.2f} ")#
 
@@ -109,7 +95,7 @@ def view_total():
         choice = verify_choice(choice,time_scale)
         if not choice:
             continue
-        if choice == 'Daily':#time_scale[choice]
+        if choice == 'Daily':
             Y = 0.14285
             break
         if choice == 'Weekly':
@@ -161,16 +147,16 @@ def update_expense():
         while progression == 1:
             print('Which item in ',gather)
             for i, sub_category in enumerate(expenses[gather], 1):
-                print(f"{i}. {sub_category.title()}: ${expenses[gather][sub_category]}")#- Weekly Total: ${total:.2f}
+                print(f"{i}. {sub_category.title()}: ${expenses[gather][sub_category]}")
                 category_index.append(sub_category)
-            choice = input('') #Enter the number of the category you want to see:
+            choice = input('')
             gather2 = verify_choice(choice,category_index)
             if not gather2:
                 continue
             progression +=1
             while True:
                 try:
-                    new_value = int(input(f'enter the new Weekly cost for {gather2}\n'))
+                    new_value = float(input(f'enter the new Weekly cost for {gather2}\n'))
                     if new_value < 0:
                         print('expenses cant be negative')
                         continue
@@ -188,6 +174,46 @@ def update_expense():
     print (f"succsesfully changed the weekly cost of {gather2} to {new_value}")
     return
 
+def delete_items():
+    print('deleting items\nfirst select the category then you will be promted for the next steps')
+    view_index = []
+    category_index = []
+    while True:
+        for i, category in enumerate(expenses, 1):
+            print(f"{i}. {category.title()}")
+            view_index.append(category)
+        choice = input('Enter the number of the category you want to select: ')
+        gather = verify_choice(choice,view_index)
+        if not gather:
+            continue
+        choice2 = input(f"To delete the {gather} category enter '1' \nTo delete an item within the {gather} category enter '2'\n")
+        if choice2 not in ['1','2']:
+            print ("invalid input")
+            continue
+        if choice2 == '1':
+            confirm_check = input(f"type 'yes' to confirm you want to delete the {gather} category and everything in it\n").strip().lower()
+            if confirm_check != 'yes':
+                print('nothing was deleted exiting menu')
+                return
+            del expenses[gather]
+            print(f"the {gather} category and all its contents deleted succsesfully")
+            return
+        if choice2 == '2':
+            for i, category in enumerate(expenses[gather], 1):
+                print(f"{i}. {category.title()}")
+                category_index.append(category)
+            choice3 = input('Enter the number of the category you want to select: ')
+            gather2 = verify_choice(choice3,category_index)
+            if not gather:
+                continue
+            confirm_check = input(f"type 'yes' to confirm you want to delete the {gather2} item within the {gather} category\n").strip().lower()
+            if confirm_check != 'yes':
+                print('nothing was deleted exiting menu')
+                return
+            del expenses[gather][gather2]
+            print(f"the item '{gather2}' and its costs deleted succsesfully")
+            return
+
 def verify_choice(choice, index_list):
     try:
         choice = int(choice) - 1
@@ -202,16 +228,54 @@ def verify_choice(choice, index_list):
         print('Invalid choice')
         return None
 
+def save_exit():
+    file_path.write_text(json.dumps(expenses))
+    print('Saved')
 
-#def save_quit():
+while True:
+    try:
+        choice = int(input("""Expense Tracker
+    would you like to
+    1 add Expense
+    2 View all tracked expenses
+    3 View costs of expenses based on a time frame
+    4 View expenses in a category
+    5 Update expenses
+    6 Delete item or category
+    9 Save & Quit
+    """))
+        if choice == 1:
+            add_expense_menu()
+            continue
+        elif choice == 2:
+            view_all_expenses()
+            continue
+        elif choice == 3:
+            view_total()
+            continue
+        elif choice == 4:
+            view_by_catagory()
+            continue
+        elif choice == 5:
+            update_expense()
+            continue
+        elif choice == 6:
+            delete_items()
+            continue
+        elif choice == 9:
+            save_exit()
+            break
+        else:
+            print("numbers are hard")
+            continue
+    except ValueError:
+        print("if only you could count")
+        continue
 
-
-add_expense_menu()
-#view_by_catagory()
-#view_total()
-#update_expense()
-print(expenses)
-print('test done')
-
-
-
+'''
+expenses = {
+'food' : { 'beef' : 40.00 ,'vegetables' : 30.00, 'eggs' : 10.00, 'rice' : 6.00 , 'seasoning' : 4.00},
+'subscriptions' : {'gym' : 17.50 , 'Ai' : 10.00, 'other' : 7.50},
+'life' : { 'phone' : 20.00, 'car' : 200.00 , 'apartment' : 320.00, 'purchases': 30.00}
+}
+'''

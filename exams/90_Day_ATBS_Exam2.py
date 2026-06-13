@@ -9,7 +9,7 @@ Build a simple inventory:
 Pass: Built it, file saves/loads, works correctly
 Fail: Struggled with dictionary methods or file I/O
 '''
-Soft Pass
+#Soft Pass
 
 
 from pathlib import Path
