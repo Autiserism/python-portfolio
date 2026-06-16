@@ -1,3 +1,5 @@
+DESIGNING AND DEPLOYING COMMAND LINE PROGRAMS
+**********************************************************************
 'Running Python Scripts from the Terminal
 //////////////////////////////////////////////////////////////////////
 What it is:
@@ -155,7 +157,7 @@ Gotcha:
 ----------------------------------------------------------------------
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ----------------------------------------------------------------------
-Self-Aware Python Variables
+'Self-Aware Python Variables
 //////////////////////////////////////////////////////////////////////
 What it is:
     Python automatically sets several built-in variables
@@ -330,9 +332,15 @@ Gotcha:
 Summary:
 //////////////////////////////////////////////////////////////////////
 Run scripts from terminal with python script.py; add your Scripts folder to PATH so you can run them from anywhere
+
 sys.argv passes command line arguments to your script as a list of strings — index 0 is always the script name
+
 Create a .venv virtual environment per project with python -m venv .venv; always use python -m pip to install packages to the right environment
+
 Self-aware variables (__file__, os.name, sys.platform, sys.version_info) let scripts adapt to their environment at runtime
+
 bext adds terminal colors and cursor control; PyMsgBox adds simple popup dialogs — both are lightweight alternatives to full GUI frameworks
+
 Deployment = a .bat/.command/shell script launcher in your PATH folder that activates the venv, runs the script, and deactivates
+
 PyInstaller --onefile bundles a script into a shareable executable — must be compiled on the target OS
