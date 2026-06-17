@@ -61,7 +61,7 @@ def fetch_english_date(task_variable):
 
 def select_task(note):
     if not STR:
-        print('No tasks to modify\Return when you have something to do')
+        print('No tasks to modify\nReturn when you have something to do')
         return
     print(f'First select a task {note}')
     picked = verify_choice()
