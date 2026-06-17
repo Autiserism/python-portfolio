@@ -1,3 +1,30 @@
 
  sorted(var, key=lambda x:x['thing'], reverse=True)
 for lists and dictionaries
+with multiple key names and sub keys with a number value 
+
+trying to sort tasks by date 
+{'Taco Time': '1/27/1973'}
+
+def sort_by_due(tasks):
+    close_to_far = sorted(tasks.items(), 
+                          key=lambda x: datetime.datetime.strptime(x[1], '%m/%d/%Y'))
+    for name, date in close_to_far:
+        print(f"{name} — {date}")
+Here x is a tuple (taskname, taskdate) so x[1] grabs the date string.
+
+
+Switch to list of dicts — cleaner and more flexible:
+
+python
+tasks = [
+    {'task': 'Taco Time', 'due': '1/27/1973'},
+    {'task': 'Pay Rent',  'due': '3/01/2024'}
+]
+
+def sort_by_due(tasks):
+    close_to_far = sorted(tasks, 
+                          key=lambda x: datetime.datetime.strptime(x['due'], '%m/%d/%Y'))
+    for i, task in enumerate(close_to_far, 1):
+        print(f"{i}. {task['task']} — {task['due']}")
+The list of dicts is the better call — named keys are clearer than x[1], and if you ever want to add priority, status, or notes later you just add another key without restructuring anything.
