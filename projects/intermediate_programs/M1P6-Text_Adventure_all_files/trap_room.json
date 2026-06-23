@@ -1,0 +1,60 @@
+{
+  "fire": {
+    "description": "The air is thick with the stink of scorched wood and old ash. A passage waits beyond.",
+    "search_result": "You spot soot-blackened pressure plates hidden in the grit and carefully wedge them shut. \nProceeding cautiously to the next room\nas",
+    "trigger_text": "Hidden vents roar to life and gouts of flame wash over you!engulfed in the blaze, you stagger into the next room without any eyebrows\nas",
+    "damage": 30
+  },
+  "spikes": {
+    "description": "Dried rust-brown stains streak the flagstones. Something about the floor feels wrong.",
+    "search_result": "You find the seams of a spring-loaded floor and pin the mechanism in place.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "The floor drops and a rack of iron spikes slams up through it!pierced by the spikes, you struggle to your feet and stagger into the next room\nas",
+    "damage": 35
+  },
+  "false_fountain": {
+    "description": "A fountain burbles in the corner, its water glinting and inviting. A passage lies past it.",
+    "search_result": "As you scan the room, you notice a tripwire concealed leading up to the fountain's surface. \nas you carefully step over it, you spot a hidden latch on the fountain's base and secure it.\nand seeing the fountain's water is actually a thin layer of acid, you carefully avoid it.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "There was a tripwire! The fountain's water turns to acid and sprays you with a scalding blast!\nrealling from the burns, you stumble into the next room\nas",
+    "damage": 40
+  },
+  "no_exit": {
+    "description": "The corridor folds back on itself again and again. The way onward is not obvious.",
+    "search_result": "Tracing the draft, you find a seam in the wall that opens onto the true passage,to the next room\nas",
+    "trigger_text": "You blunder through the false turns, and running into clotheslines and mirrors you eventually find the way out.\nas",
+    "damage": 25
+  },
+  "dart_wall": {
+    "description": "Tiny holes pock the stone wall, each one pointed toward the doorway. The air smells faintly metallic.",
+    "search_result": "You spot a row of hidden launchers and wedge their triggers shut.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "A panel snaps open and a spray of poisoned darts hisses out!stung by the darts, you lurch into the next room\nas",
+    "damage": 20
+  },
+  "swinging_axes": {
+    "description": "Rusty axes hang from chains overhead, each blade chipped and dull. A passage lies beyond them.",
+    "search_result": "You notice the counterweights and jam the mechanism with a broken spear.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "The chains jerk taut and the axes sweep down in a deadly arc!blades biting into your shoulder, you stumble onward\nas",
+    "damage": 28
+  },
+  "gas_cloud": {
+    "description": "The room smells faintly sweet and sickly. The air hangs still and heavy in the corners.",
+    "search_result": "You find a cracked valve and turn it shut before the fumes can spread.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "A hidden release lets loose a cloud of choking gas!gasping and coughing, you drag yourself into the next room\nas",
+    "damage": 18
+  },
+  "collapsing_floor": {
+    "description": "The floorboards are warped and uneven, with cracks running between them like veins.",
+    "search_result": "You brace the loose planks and discover the weak boards are only a thin disguise.\nProceeding cautiously to the next room\nas",
+    "trigger_text": "The floor gives way under you and a section of stone drops away!scrambling for purchase, you tumble into the next room\nas",
+    "damage": 24
+  },
+  "all_traps": [
+    "fire",
+    "spikes",
+    "false_fountain",
+    "no_exit",
+    "dart_wall",
+    "swinging_axes",
+    "gas_cloud",
+    "collapsing_floor"
+  ]
+}

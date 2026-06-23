@@ -1,0 +1,8 @@
+{
+  "single": {
+    "description": "A single iron-bound chest sits in the middle of the room. A passage waits behind it."
+  },
+  "dual": {
+    "description": "Two identical chests rest side by side. A passage leads on past them."
+  }
+}

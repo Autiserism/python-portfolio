@@ -1,0 +1,16 @@
+{
+  "items": {
+    "small_potion":  { "name": "Minor Healing Draught","category": "healing", "heal": 25},
+    "medium_potion": { "name": "Healing Draught",       "category": "healing", "heal": 60},
+    "large_potion":  { "name": "Major Healing Draught", "category": "healing", "heal": 140},
+    "max_attack_potion": { "name": "Elixir of Strength","category": "attack_max", "attack_boost": 10},
+    "min_attack_potion": { "name": "Elixir of minor Strength","category": "attack_min", "attack_boost": 5}
+  },
+ "all_items": [
+    "small",
+    "medium",
+    "large",
+    "max_attack",
+    "min_attack"
+  ]
+}

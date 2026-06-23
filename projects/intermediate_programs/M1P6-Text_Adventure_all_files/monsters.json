@@ -1,0 +1,55 @@
+{
+  "small": {
+    "names": [
+      "Cave Rat",
+      "Skitterling",
+      "Gnasher",
+      "Bone Whelp",
+      "Gutter Imp"
+    ],
+    "hp": 120,
+    "dmg": 40
+  },
+  "medium": {
+    "names": [
+      "Gloomhound",
+      "Rotting Sentry",
+      "Pale Stalker",
+      "Grave Warden",
+      "Ashen Brute"
+    ],
+    "hp": 260,
+    "dmg": 65
+  },
+  "large": {
+    "names": [
+      "Stone Brute",
+      "Cragback Ogre",
+      "Iron Golem",
+      "Hollowed Titan",
+      "Marrow Colossus"
+    ],
+    "hp": 330,
+    "dmg": 80
+  },
+  "boss": {
+    "names": [
+      "The Warden",
+      "Hall Tyrant",
+      "The Gatekeeper",
+      "Maw of the Deep",
+      "The Unsleeping"
+    ],
+    "hp": 500,
+    "dmg": 100
+  },
+  "mimic": {
+    "names": [
+      "Mimic",
+      "False Hoard",
+      "Hungry Chest"
+    ],
+    "hp": 180,
+    "dmg": 55
+  }
+}

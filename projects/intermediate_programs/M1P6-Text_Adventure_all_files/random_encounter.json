@@ -1,0 +1,11 @@
+{
+  "mimic": {
+    "disguise_description": "A fat, promising chest sits alone in the room, a passage behind it.",
+    "search_warning": "From here the chest looks wrong - the lid swells and settles like something breathing.",
+    "ambush_text": "The chest splits open into a ring of teeth and lunges - a Mimic!",
+    "strike_first_text": "You strike before it can spring, catching it open and helpless!"
+  },
+  "wandering": {
+    "ambush_text": "Something peels away from the shadows and rushes you!"
+  }
+}

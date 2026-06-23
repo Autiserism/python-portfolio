@@ -1,0 +1,64 @@
+{
+  "start_ticks": 1000,
+  "player_max_hp": 500,
+  "player_dph": 30,
+  "crit_chance": 0.15,
+  "crit_mult": 1.5,
+
+  "tick_costs": {
+    "move": 1,
+    "search": 8,
+    "wait": 1,
+    "attack": 2,
+    "block_window": 2,
+    "block_cooldown": 2,
+    "item_open": 1,
+    "item_use": 1,
+    "flee": 5,
+    "drink_fountain": 1
+  },
+
+  "combat": {
+    "block_reduction": 0.70,
+    "block_delay_bonus": 5,
+    "stun_ticks": 3,
+    "flee_hit_chance": 0.5,
+    "miss_chance": 0.10,
+    "miss_open_ticks": 3
+  },
+
+  "rewards": {
+    "boss_tick_bonus": 100,
+    "fountain_heal": 200,
+    "false_fountain_damage": 75,
+    "boss_loot": ["whetstone", "large_potion"]
+  },
+
+  "ambush": {
+    "easy_backtrack_chance": 0.25,
+    "hard_entry_chance": 0.20,
+    "endless_entry_chance": 0.20,
+    "monster_weights": { "small": 0.55, "medium": 0.35, "large": 0.10 }
+  },
+
+  "loot": {
+    "trapped_chest_damage": 40,
+    "drop_chance_monster": 0.7,
+    "dual_chest_trapped_threshold": 5
+  },
+
+  "generation": {
+    "easy_digits": 40,
+    "hard_digits": 60,
+    "min_typed_digits": 40,
+    "min_pairs_before_boss": 0
+  },
+
+  "scaling": {
+    "easy":    { "monster_hp_per_room": 0.0,   "monster_dmg_per_room": 0.0,   "vulnerability_per_room": 0.0,   "vulnerability_max": 1.0 },
+    "hard":    { "monster_hp_per_room": 0.03,  "monster_dmg_per_room": 0.02,  "vulnerability_per_room": 0.01,  "vulnerability_max": 2.0 },
+    "endless": { "monster_hp_per_room": 0.04,  "monster_dmg_per_room": 0.03,  "vulnerability_per_room": 0.015, "vulnerability_max": 3.0 }
+  },
+
+  "starting_kit": ["medium_potion", "small_time"]
+}

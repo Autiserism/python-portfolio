@@ -1,0 +1,15 @@
+{
+  "fountain": {
+    "description": "A clear fountain bubbles softly at the room's heart, its water faintly luminous. A passage lies beyond.",
+    "drink_text": "You cup the cool water and drink deep. Warmth spreads through your limbs."
+  },
+  "search_find": {
+    "description": "An old storeroom, cluttered with broken furniture and rotted crates. A passage leads onward.",
+    "search_result": "Behind a toppled cabinet you turn up something worth keeping!"
+  },
+  "red_herring": {
+    "description": "A bare, silent room. Nothing but dust and a passage leading straight on.",
+    "search_result": "You comb every corner and shadow... nothing here but wasted time... you open the door and step into the next room, disappointed."
+  },
+  "loot_or_nothing": ["search_find","red_herring"]
+}
