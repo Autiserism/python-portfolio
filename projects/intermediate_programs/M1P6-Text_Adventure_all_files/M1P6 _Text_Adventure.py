@@ -1,5 +1,5 @@
 '''
-Hand made (primitive version)
+Hand made code Generated .json room descriptions
 -Rism
 
 M1P6 — Text Adventure (No prereq, for fun)
@@ -11,26 +11,29 @@ Adding new rooms or encounters only requires editing the JSON, no code changes.
 from pathlib import Path
 import random,re,json,time,datetime,os
 
-data_dir = Path.home() / 'projects'/ 'M1P6'
+data_dir = Path.home() / 'projects'/ 'M1P6' #<<<<<<<<Put .json files in this folder
 data_dir.mkdir(parents=True,exist_ok=True)
+os.chdir(data_dir)
 
-chest_encounters = data_dir / 'chest_encounters.json'
-trap_room        = data_dir / 'trap_room.json'
-random_encounter = data_dir / 'random_encounter.json'
-monsters         = data_dir / 'monsters.json'
-safe_rooms       = data_dir / 'safe_rooms.json'
-boss_room        = data_dir / 'boss_room.json'
-win_exit         = data_dir / 'win_exit.json'
-items            = data_dir / 'items.json'
+chest_encounters =  'chest_encounters.json'
+trap_room        =  'trap_room.json'
+random_encounter =  'random_encounter.json'
+monsters         =  'monsters.json'
+safe_rooms       =  'safe_rooms.json'
+boss_room        =  'boss_room.json'
+win_exit         =  'win_exit.json'
+items            =  'items.json'
 
 all_encounters = [chest_encounters, trap_room, random_encounter,monsters, safe_rooms, boss_room, win_exit]
 
 def load_json(path):
+    path = Path(path)
     if path.exists():
         return json.loads(path.read_text())
     return {}
 
 def save_json(path, data):
+    path = Path(path)
     path.write_text(json.dumps(data, indent=4))
     print(f"{path.name} saved.")
 
@@ -90,10 +93,6 @@ def combat(monster_name,monster_pointer,monster_size):
     #global tick_time
     #tick_time -= 1
 
-
-def room_gen():
-    print('1')
-
 def roll_loot(reward_type):
     global player_health,min_attack,max_attack
     all_items = items["all_items"]
@@ -101,13 +100,11 @@ def roll_loot(reward_type):
         reward_type = random.choice(all_items)
         print(reward_type)
     if reward_type == "boss":
-        #print(boss_room['victory'])
         print("as you catch your breath some of its essence flows ino you")
         max_attack += 25
         print('your max attack has increased too ',max_attack)
         return
     potion_type = reward_type + "_potion"
-    #print(potion_type)
     _ = items["items"][potion_type]
     if _["category"] == "healing":
         print(f'You find a {_["name"]}')
@@ -132,10 +129,6 @@ def roll_loot(reward_type):
         print("You find a little piece of paper with a large 'IOU' printed on it")
         return
 
-    #raise min_attack?
-    #raise max_attack?
-    #gain health potion
-
 def chest_room():
     C_room = ['open', 'proceed']
     _ = chest_encounters
@@ -147,11 +140,6 @@ def chest_room():
     else:
         print('You decide better safe then sorry and open the door behind it\nas')
 
-#description
-#search_result
-#trigger_text
-#damage
-#tick_drain
 def trapped_room():
     P_or_S = ['proceed','search']
     T_room = trap_room["all_traps"]
@@ -191,7 +179,6 @@ def health_fountan():
     if choice == 'avoid':
         print('you pass the fountain and proceed to the next door\nas')
         return
-
 
 def mimic_room():
     M_room = ['open','scan', 'proceed']
@@ -251,7 +238,6 @@ def large_monter():
     mn = random.choice(names)
     combat(mn,kind,"large")
 
-
 def empty_room():
     all_items = items["all_items"]
     P_or_S = ['proceed','search']
@@ -268,7 +254,6 @@ def empty_room():
         print('You decide to just pass through to open the door\nas')
         return
 
-
 def boss_encounters():
     global player_health
     _ = boss_room
@@ -283,18 +268,15 @@ def boss_encounters():
         print('hp',player_health)
         return
     else:
-        print('you are already overhealed')
+        print('you are already at full-health')
         return
 
-
-
-
 def winner():
+    print('-your did it')
     _ = win_exit
     print(_["title"])
     print(_["text"])
     exit()
-
 
 def seed_generator(dificulty):
     seed = []
@@ -322,7 +304,6 @@ def dificulty_helper():
     choice = choice_helper(dificulty,'enter the number to select dificulty\n')
     seed_run = seed_generator(choice)
     return seed_run
-
 
 decision_room_note = '''\nyou see 2 identical doors ahead of you,
 one on the right and one on the left\nWhich door do you enter?
@@ -362,7 +343,6 @@ empty_room
 def door_pick(num):
     room_function = room_callout[int(num)]
     room_function()
-
 '''
 0 = normal chest
 1 = trap room
@@ -371,12 +351,10 @@ def door_pick(num):
 4 = random encounter
 5 = search room
 6 = medium monster
-7 = 2 chests random number for each if its number is 0-4 its safe above its trapped
+7 = 2 chests random number if its number is above 35 its  its safe
 8 = large monster
 9 = safe room
 '''
-
-
 
 "start menu"
 def start_game():
@@ -601,71 +579,7 @@ Add on's:
     Save/checkpoint system
     Score/leaderboard system
 ________________________________________________________________________________________________________
-
-
-
-
-its action tick based or turn based to make the search function have some impact with an over arching (placeholder number) 1000 tick run time limit
-
-
-
-yes after say a monster encounter progressing through the next progression door places the player in a separate room to then choose left or right again (the next instance of numbers) if by going through that progression door the next sequence is a number pair the boss fight begins if 99 freedom encounter executes
-
-
-
-use the table, the low high was an old brainstorm idea
-
-
-
-every action costs at least 1 'tick' of time more for some actions going through the progression door to the other room with choices (mentioned for the answer for question 2) then locks player is free to search both rooms at the cost of 'ticks' for the trap rooms and rooms in general player enters the door selected and is presented with a minor vague description of the room and progressing without searching activates the trap for monsters specifically after entering they are greeted with a monster who would have a varying 2tick?-5tick? attack sequence with proportional damage  with maybe an indicator as to its attack progression
-
-
-
-difficulty easy as a 40 digit randomly generated number seed with a 99(exit) inject at the end, hard a 60 digit random seed(with no 99 pair) where every room after the main seed is a pair of random numbers generated until the 99 is generated and endless just keep generating number pairs maybe append them to a  variable showing statistics at the end
-
-
-
-raw chaos may the RNG be in your favor
-
-
-
-have the option to type a seed or generate one make sure minimum 40digits and check for no early 99 they could have all boss rooms if they typed it out that way
-
-
-
-HP and DMG variables will take some testing to tune right have them in an easy spot to adjust as needed for now 500starting HP and DPH set to 30? increased with items potentially and or a chance of a critical hit? as for block its duration set to 2? ticks to give player time to line up monsters attack and block it blocking 70% of incoming damage with a 2? tick window after blocking before an action can be made to prevent repeat blocks if not timed right when an attack is successfully blocked it adds +5? ticks to the next monster attack allowing an attack chain with each attack taking 2 ticks wind up and attack if the player is hit during a wind up they are stunned for 3? ticks
-
-
-
-HP and attack will take some balancing but for now small has 120HP deals 40DMG attacks fast 1-3Ticks but no player wind up interrupt, medium has 260HP deals 65DMG attacks 2-5 tick attacks, large has 330HP 80DMG attacks 3-6ticks, Boss has 500HP  120 dmg attacks 2-10ticks monsters drop loot only found if searched
-
-
-
-fleeing lands you back into the decision room with the 2 doors to pick from with a chance to be attacked as you exit regardless of monster wind up bosses are locked doors no fleeing
-
-
-
-starting time 1000? ticks will have to balance regular moving costs 1 tick any movement progression, combat ticks are mentioned in answers 8 and 9 flee costs a flat 5? boss clear grants +100? can find items that restore time time added on find
-
-
-
-room search when in the decision room search just says there's 2 identical doors to choose from when entering a room you are either met with a monster or boss (which after slaying says something like the beast lay dead and you see a progression door if searched loots the beast ,or a room with a vague description depending on the room with the option to search for 8? ticks or proceed to the progression door if one is mentioned in the description potentially have the description mention the door and if a chest room say you spot a chest in the middle of the room with a progression door behind it random encounter have it as a mimic? for now have the search to guaranteed to find it/out if trapped and avoid them to progress 9 is the red herring its plain just an easy progression that would usually waste  search ticks with 5 being a search and find some loot behind a chair on some XYZ description of a text adventure room
-
-
-
-for loot only stat boosts and healing items each chest rolled independently with search saying its a pair of chests both could be trapped or both have loot
-
-
-
-each item use costs a tick opening the bag costs a tick(because healing during a fight) false fountain damages 75? instead of heals real fountains are a 1 time 200?heal with items ranging from small 25HP? medium 60hp? and large 140HP? similar to found tick time items and other varying single use items unlimited inventory
-
-
-
-i will have you the generator and author you are free to take liberties with design's and features
-
-before progressing to the creation is their any more questions for me?
-
-
+(●Y●)
 '''
 
 
