@@ -9,14 +9,18 @@ Then opens the zip and prints the list of all files inside it using namelist()
 '''
 
 from pathlib import Path
-import zipfile, os
+import zipfile, os,time,datetime
+
+now = datetime.datetime.now()
+time_date = f"{now.day}/{now.month}/{now.year}"
+print(time_date)
 
 file_path = Path.home()
-location = file_path / 'Documents'
+location = file_path / 'projects'
 location = Path(location)
 walk_here = file_path / 'Documents' / 'python_portfolio'
 
-zip_filename = 'Python_Backups.zip'
+zip_filename = f'Python_Backups-{time_date}.zip'
 zip_path = location / zip_filename
 backup_zip = zipfile.ZipFile(zip_path, 'w')
 
@@ -25,7 +29,7 @@ amount = 0
 for folder_name, subfolders, filenames in os.walk(walk_here):
     folder_name = Path(folder_name)
     for filename in filenames:
-        if filename.endswith('.py'):
+        if filename.endswith('.py','.json'):
             backup_zip.write(folder_name / filename)
             amount +=1
 backup_zip.close()
