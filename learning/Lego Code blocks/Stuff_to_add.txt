@@ -1,4 +1,9 @@
 
+
+CSV sorting/filtering
+
+
+
  sorted(var, key=lambda x:x['thing'], reverse=True)
 for lists and dictionaries
 with multiple key names and sub keys with a number value 
@@ -28,3 +33,5 @@ def sort_by_due(tasks):
     for i, task in enumerate(close_to_far, 1):
         print(f"{i}. {task['task']} — {task['due']}")
 The list of dicts is the better call — named keys are clearer than x[1], and if you ever want to add priority, status, or notes later you just add another key without restructuring anything.
+
+

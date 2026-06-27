@@ -54,7 +54,7 @@ def get_grade (average):
     else:
         return ('F')
 
-with open('ATBSCh18D2.csv', 'w', newline='') as f:
+with open('ATBSCh18D2.csv', 'a', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=['name','scores', 'subjects','average'])#
     writer.writeheader()
     for i in range(4):
