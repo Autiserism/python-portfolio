@@ -28,18 +28,5 @@ extract_zip = zipfile.ZipFile(zip_path)
 print(extract_zip.namelist())
 extract_zip.close()
 print(f'backed up as = Python_Backups-{time_date}.zip')
-e = input('>')
-'''
-filename.endswith((
-    # code
-    '.py',
-    # data
-    '.json', '.csv', '.txt', '.xml', '.yaml', '.yml',
-    # database
-    '.db', '.sqlite', '.sqlite3',
-    # docs
-    '.md', '.pdf',
-    # environment
-    '.env', '.cfg', '.ini', '.toml',
-))
-'''
+e = input('> everything was backed up hit enter to close window')
+

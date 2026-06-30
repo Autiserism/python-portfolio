@@ -30,5 +30,5 @@ Rooms, descriptions, and choices stored in a JSON file you edit manually in VS C
 M1P7 — ✔ CSV Log / Tracker (Ch 18)
 A workout or habit log. Add an entry (date, activity, notes). View all entries. Filter by date range or activity type. Reads and writes a CSV file. Data persists between runs.
 
-M1P8 — JSON API Fetcher (Ch 18)
+M1P8 — ✔ JSON API Fetcher (Ch 18)
 Connect to a free public API (weather and exchange rates are good options). User inputs a query (city name, currency pair etc.), program fetches the data, parses the JSON response, and displays it cleanly in the terminal. Error handling for failed requests or bad input. Optionally saves results to a file.

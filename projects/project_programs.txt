@@ -1,0 +1,27 @@
+Python Portfolio — Project Lineup
+W Series — Foundational Practice (Ch 1-9)
+
+30 programs, 3 weeks, no chapter prerequisites. Building syntax fluency and basic program structure.
+W1P1 Unit Converter (basic) · W1P2 Word Counter · W1P3 Grade Tracker · W1P4 Shopping List · W1P5 Contact Book · W1P6 Number Guessing Game · W1P7 Caesar Cipher · W1P8 Student Report Card · W1P9 Password Generator · W1P10 Inventory Manager
+W2P1 Calculator with Logging · W2P2 Quiz Game · W2P3 Text Analyzer · W2P4 Login System · W2P5 Bank Account · W2P6 Hangman · W2P7 To-Do List · W2P8 Number Base Converter · W2P9 Word Scrambler · W2P10 Student Grade Manager
+W3P1 Input Validator (Regex) · W3P2 Text Cleaner · W3P3 Log File Analyzer · W3P4 Password Strength Checker · W3P5 Mini Address Book
+
+M1 Series — Real-World Tools (Ch 10-19)
+
+8 programs, each tied to a specific chapter's skillset. Persistence, file I/O, APIs, and date logic.
+M1P1 Unit Converter (full — length/weight/temperature) · M1P2 Expense Tracker (JSON persistence) · M1P3 Age/Date Calculator (Ch 19) · M1P4 Scheduled Task Reminder (Ch 19) · M1P5 Excel Reader/Writer (Ch 14) · M1P6 Text Adventure — JSON-driven roguelike (no prereq) · M1P7 CSV Log/Tracker (Ch 18) · M1P8 JSON API Fetcher — chained geocoding + weather API (Ch 18)
+
+M2 Series — Automation Pipeline Bricks (Ch 17-18 + general)
+
+Modular, recombinable components for data processing service work. Each brick is independently reusable.
+M2P1 The Reader — load CSV/Excel into structured records, handle messy/missing data
+
+M2P2 The Cleaner — normalize whitespace, dates, numbers; dedupe; flag broken rows
+
+M2P3 The Rule-Checker — generic condition-matching engine for flagging records
+
+M2P4 The Writer — output clean CSV/Excel or formatted plain-text reports
+
+M2P5 The Date Toolkit — reusable date math, overdue checks, business-day logic
+
+M2P6 Full Pipeline Demo — all five bricks chained on one realistically messy sample file

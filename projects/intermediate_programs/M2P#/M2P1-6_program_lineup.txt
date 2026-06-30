@@ -1,0 +1,14 @@
+M2 Series — Automation Pipeline Bricks (Ch 17-18 + general)
+
+Modular, recombinable components for data processing service work. Each brick is independently reusable.
+M2P1 The Reader — load CSV/Excel into structured records, handle messy/missing data
+
+M2P2 The Cleaner — normalize whitespace, dates, numbers; dedupe; flag broken rows
+
+M2P3 The Rule-Checker — generic condition-matching engine for flagging records
+
+M2P4 The Writer — output clean CSV/Excel or formatted plain-text reports
+
+M2P5 The Date Toolkit — reusable date math, overdue checks, business-day logic
+
+M2P6 Full Pipeline Demo — all five bricks chained on one realistically messy sample file
