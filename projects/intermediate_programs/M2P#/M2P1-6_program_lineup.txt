@@ -1,14 +1,13 @@
-M2 Series — Automation Pipeline Bricks (Ch 17-18 + general)
+M2 Series — QuizChime app Goal (Ch 17-18 + general)
 
-Modular, recombinable components for data processing service work. Each brick is independently reusable.
-M2P1 The Reader — load CSV/Excel into structured records, handle messy/missing data
+M2P1 — Deck Validator. Before a CSV goes into the loader, check it: no blank questions or answers, no duplicate questions, flag questions over ~200 characters (too long for a phone notification). Prints a report of what's wrong and on which line. Skills: CSV (Ch. 18), string methods, list/dict logic. You'll run this on every deck you build for testers.
 
-M2P2 The Cleaner — normalize whitespace, dates, numbers; dedupe; flag broken rows
+M2P2 — Database Backup Script. Copies passmasters.db to a backups/ folder with a timestamped filename (quizchime_2026-07-08_0900.db), deletes all but the newest 10. Skills: shutil, os.path, datetime (Ch. 10–11, 19). The day a tester's three weeks of review data exists, you'll want this running before anything else touches the DB.
 
-M2P3 The Rule-Checker — generic condition-matching engine for flagging records
+M2P3 — Review Log Reporter. Reads the reviews table and prints per-user, per-day answer counts plus each user's last-seen date — your ghosting detector. This is the script that answers your kill/continue question. Skills: the sqlite3 module — check whether you've hit the SQLite chapter in the 3rd edition yet; if not, this project is your reason to. The SQL queries are already written in the README; your job is wrapping them in Python.
 
-M2P4 The Writer — output clean CSV/Excel or formatted plain-text reports
+M2P4 — Stats Digest Generator. Builds on M2P3: writes a weekly summary to a text file — total answers, accuracy trend, streaks, most-missed cards. Skills: file writing, string formatting, basic aggregation. This becomes the thing you glance at every Monday instead of squinting at raw tables.
 
-M2P5 The Date Toolkit — reusable date math, overdue checks, business-day logic
+M2P5 — Ping Timing Analyzer. From the reviews log, figure out when answers happen: which hours of day get responses, how long after a ping people answer (compare reviewed_at timestamps against expected ping windows). Skills: datetime math, dictionaries as counters. Directly feeds the "pacing is a core design decision" warning from your research doc.
 
-M2P6 Full Pipeline Demo — all five bricks chained on one realistically messy sample file
+M2P6 — Tester Onboarding Kit. Ties it together: given a tester's name and a deck CSV, it validates the deck (M2P1's logic), loads it (M1P9's logic), and prints a personalized welcome message you can paste into Telegram. Skills: importing and reusing your own modules — your LEGO-brick philosophy applied to your own projects for the first time.

@@ -32,3 +32,5 @@ A workout or habit log. Add an entry (date, activity, notes). View all entries. 
 
 M1P8 — ✔ JSON API Fetcher (Ch 18)
 Connect to a free public API (weather and exchange rates are good options). User inputs a query (city name, currency pair etc.), program fetches the data, parses the JSON response, and displays it cleanly in the terminal. Error handling for failed requests or bad input. Optionally saves results to a file.
+
+M1P9 Exam The deck-loader script — this is an M1-grade project sitting in your lap. When testers join, you'll want to pre-load a deck into their account (removing deck-creation friction, per the plan). The script: read a CSV of question,answer rows, and insert them via the functions already in db.py (create_deck, add_card). That's file handling + CSV (your Chapter 18 material) + calling functions from an imported module + a taste of reading someone else's code to figure out an interface. It's genuinely at your level, it's real (you'll actually use it in two weeks), and it slots into your M#P# convention cleanly. Call it M1P9. I'll review it when you've got a draft — and if you get stuck on how db.py works, that struggle is the exercise.
